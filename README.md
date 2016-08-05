@@ -54,6 +54,10 @@ namespace :spec do
     end
 
     Vigia.rspec!
+    
+    # kill rails server (only Unix-like systems)
+    pid = File.read(File.expand_path(File.dirname(__FILE__) + '/../../tmp/pids/server.pid'))
+    system("kill -9 #{pid}") if pid.present?
   end
 end
 ```
